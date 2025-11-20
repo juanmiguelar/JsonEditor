@@ -347,9 +347,6 @@ const App = () => {
 
   // Stats
   const originalSize = useMemo(() => new Blob([jsonText]).size, [jsonText]);
-  const compressedPreview = useMemo(() => {
-    return gzipResult ? Math.round(gzipResult.length * 0.75) : 0;
-  }, [gzipResult]);
 
   return (
     <div className="flex flex-col h-screen bg-slate-950 text-slate-200">
