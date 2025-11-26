@@ -356,9 +356,17 @@ const App = () => {
           <div className="w-6 h-6 bg-blue-600 rounded flex items-center justify-center text-xs font-bold">JE</div>
           <h1 className="font-semibold text-lg">JSON Editor</h1>
         </div>
-        <div className="text-xs text-slate-500">
-          Using React + Tailwind + Pako
-        </div>
+        <a 
+          href="https://www.buymeacoffee.com/juanmiguelar09" 
+          target="_blank" 
+          rel="noopener noreferrer"
+        >
+          <img 
+            src="https://cdn.buymeacoffee.com/buttons/v2/default-blue.png" 
+            alt="Buy Me A Coffee" 
+            className="h-10 w-auto hover:opacity-90 transition-opacity" 
+          />
+        </a>
       </header>
 
       {/* Main Content */}
@@ -493,22 +501,8 @@ const App = () => {
           {/* Scrollable Content Area */}
           <div className="flex-1 overflow-auto p-4">
             
-            {/* Tree View Section */}
+            {/* Gzip Tools Section (Now First) */}
             <div className="mb-6">
-              <h2 className="text-xs uppercase tracking-wider text-slate-500 font-bold mb-3">Tree View</h2>
-              <div className="bg-slate-900 rounded-lg border border-slate-800 p-2 overflow-x-auto min-h-[200px]">
-                {error || !jsonText ? (
-                  <div className="h-full flex flex-col items-center justify-center text-slate-600 py-10 text-sm">
-                    <span>{error ? 'Fix validation errors to see tree' : 'Enter JSON to view tree'}</span>
-                  </div>
-                ) : parsedJson ? (
-                  <JsonNode value={parsedJson} isLast={true} />
-                ) : null}
-              </div>
-            </div>
-
-            {/* Gzip Tools Section */}
-            <div className="border-t border-slate-800 pt-6">
                <h2 className="text-xs uppercase tracking-wider text-slate-500 font-bold mb-3 flex justify-between items-center">
                  <span>Gzip Compression (Base64)</span>
                  {gzipResult && (
@@ -561,6 +555,20 @@ const App = () => {
                    </div>
                  )}
                </div>
+            </div>
+
+            {/* Tree View Section (Now Second) */}
+            <div className="border-t border-slate-800 pt-6 mb-6">
+              <h2 className="text-xs uppercase tracking-wider text-slate-500 font-bold mb-3">Tree View</h2>
+              <div className="bg-slate-900 rounded-lg border border-slate-800 p-2 overflow-x-auto min-h-[200px]">
+                {error || !jsonText ? (
+                  <div className="h-full flex flex-col items-center justify-center text-slate-600 py-10 text-sm">
+                    <span>{error ? 'Fix validation errors to see tree' : 'Enter JSON to view tree'}</span>
+                  </div>
+                ) : parsedJson ? (
+                  <JsonNode value={parsedJson} isLast={true} />
+                ) : null}
+              </div>
             </div>
 
             {/* About Developer Section */}
