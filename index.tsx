@@ -614,7 +614,7 @@ const App = () => {
                     <li>Search with match navigation to debug data.</li>
                   </ul>
                   <p className="text-xs text-slate-500">
-                    Indexable copy for search and AI: online JSON editor, tree view, gzip base64, linting, formatting and minification.
+                    Indexable copy for search: online JSON editor, tree view, gzip base64, linting, formatting and minification.
                   </p>
                 </div>
                 <div className="bg-slate-900 rounded-lg border border-slate-800 p-4 flex flex-col gap-3">
@@ -637,7 +637,7 @@ const App = () => {
               <h2 className="text-xs uppercase tracking-wider text-slate-500 font-bold mb-3">Use cases and semantic context</h2>
               <div className="bg-slate-900 rounded-lg border border-slate-800 p-4 text-sm text-slate-400 leading-relaxed space-y-2">
                 <p>
-                  Ideal for debugging REST/GraphQL APIs, reviewing webhooks, validating microservice configs, JSON schema prompts for AI, and cleaning data before storing or sending it.
+                  Ideal for debugging REST/GraphQL APIs, reviewing webhooks, validating microservice configs, JSON schema, and cleaning data before storing or sending it.
                 </p>
                 <ul className="list-disc list-inside space-y-1">
                   <li>Debug payloads in integrations and automations.</li>
