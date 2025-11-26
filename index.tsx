@@ -349,12 +349,15 @@ const App = () => {
   const originalSize = useMemo(() => new Blob([jsonText]).size, [jsonText]);
 
   return (
-    <div className="flex flex-col h-screen bg-slate-950 text-slate-200">
+    <div className="flex flex-col min-h-screen bg-slate-950 text-slate-200">
       {/* Header */}
       <header className="h-14 bg-slate-900 border-b border-slate-800 flex items-center px-6 justify-between shrink-0">
-        <div className="flex items-center gap-2">
-          <div className="w-6 h-6 bg-blue-600 rounded flex items-center justify-center text-xs font-bold">JE</div>
-          <h1 className="font-semibold text-lg">JSON Editor</h1>
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 bg-blue-600/90 rounded flex items-center justify-center text-sm font-bold text-white shadow-lg shadow-blue-900/40">JE</div>
+          <div className="flex flex-col leading-tight">
+            <h1 className="font-semibold text-lg text-white">JSON Editor</h1>
+            <p className="text-xs text-slate-500">Validator, formatter, compressor and tree viewer</p>
+          </div>
         </div>
         <a 
           href="https://www.buymeacoffee.com/juanmiguelar09" 
@@ -370,10 +373,10 @@ const App = () => {
       </header>
 
       {/* Main Content */}
-      <div className="flex-1 flex flex-col lg:flex-row overflow-hidden">
-        
+      <main className="flex-1 flex flex-col lg:flex-row overflow-hidden" role="main">
+
         {/* Left Pane: Editor */}
-        <div className="flex-1 flex flex-col border-r border-slate-800 min-w-0">
+        <section className="flex-1 flex flex-col border-r border-slate-800 min-w-0" aria-label="Editor de JSON en texto plano">
           <div className="flex-1 relative group">
             
             {/* Search Toolbar */}
@@ -469,10 +472,10 @@ const App = () => {
               </div>
             )}
           </div>
-        </div>
+        </section>
 
         {/* Right Pane: Tools & Tree */}
-        <div className="flex-1 flex flex-col lg:w-1/2 min-w-0 bg-slate-925">
+        <section className="flex-1 flex flex-col lg:w-1/2 min-w-0 bg-slate-925" aria-label="Herramientas JSON y contenido educativo">
           
           {/* Toolbar */}
           <div className="p-3 border-b border-slate-800 bg-slate-900/50 flex gap-2 flex-wrap shrink-0">
@@ -595,9 +598,87 @@ const App = () => {
                </a>
             </div>
 
+            {/* SEO-friendly Guide */}
+            <div className="border-t border-slate-800 pt-6 mt-6">
+              <h2 className="text-xs uppercase tracking-wider text-slate-500 font-bold mb-3">Quick guide to the JSON editor</h2>
+              <div className="grid gap-4 lg:grid-cols-2">
+                <div className="bg-slate-900 rounded-lg border border-slate-800 p-4 flex flex-col gap-3">
+                  <h3 className="text-sm font-semibold text-slate-100">What this editor offers</h3>
+                  <p className="text-sm text-slate-400 leading-relaxed">
+                    Lightweight web tool in English to validate, format, minify and compress JSON. Includes tree view and shortcuts so teams can review payloads without installing anything.
+                  </p>
+                  <ul className="list-disc list-inside text-sm text-slate-400 space-y-1">
+                    <li>Live validator and formatter with instant feedback.</li>
+                    <li>Tree view for deep objects and arrays.</li>
+                    <li>Base64 Gzip encode/decode ready for APIs.</li>
+                    <li>Search with match navigation to debug data.</li>
+                  </ul>
+                  <p className="text-xs text-slate-500">
+                    Indexable copy for search and AI: online JSON editor, tree view, gzip base64, linting, formatting and minification.
+                  </p>
+                </div>
+                <div className="bg-slate-900 rounded-lg border border-slate-800 p-4 flex flex-col gap-3">
+                  <h3 className="text-sm font-semibold text-slate-100">How to use it step by step</h3>
+                  <ol className="list-decimal list-inside text-sm text-slate-400 space-y-1">
+                    <li>Paste or type your JSON and check the status bar for errors.</li>
+                    <li>Use Format or Minify depending on readability or size needs.</li>
+                    <li>Open search (Ctrl/Cmd + F) to locate keys, IDs or values.</li>
+                    <li>Share or store the compressed payload with Encode/Decode Gzip Base64.</li>
+                  </ol>
+                  <p className="text-sm text-slate-400 leading-relaxed">
+                    Optimized for sharing snippets in docs, PRs or automation flows without losing semantic context.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Use cases */}
+            <div className="border-t border-slate-800 pt-6 mt-6">
+              <h2 className="text-xs uppercase tracking-wider text-slate-500 font-bold mb-3">Use cases and semantic context</h2>
+              <div className="bg-slate-900 rounded-lg border border-slate-800 p-4 text-sm text-slate-400 leading-relaxed space-y-2">
+                <p>
+                  Ideal for debugging REST/GraphQL APIs, reviewing webhooks, validating microservice configs, JSON schema prompts for AI, and cleaning data before storing or sending it.
+                </p>
+                <ul className="list-disc list-inside space-y-1">
+                  <li>Debug payloads in integrations and automations.</li>
+                  <li>Prepare messages for queues, Lambdas or serverless functions.</li>
+                  <li>Quickly review AI-generated JSON responses.</li>
+                  <li>Document consistent, compressible examples.</li>
+                </ul>
+                <p className="text-xs text-slate-500">
+                  All content stays visible and crawlable for search engines and AI assistants, aimed at better technical indexation.
+                </p>
+              </div>
+            </div>
+
+            {/* FAQ Section */}
+            <div id="faq" className="border-t border-slate-800 pt-6 mt-6 pb-2">
+              <h2 className="text-xs uppercase tracking-wider text-slate-500 font-bold mb-3">Frequently asked questions about the JSON editor</h2>
+              <dl className="space-y-3">
+                <div id="faq-q1" className="bg-slate-900 rounded-lg border border-slate-800 p-4">
+                  <dt className="text-sm font-semibold text-slate-100">How do I validate and format JSON?</dt>
+                  <dd className="text-sm text-slate-400 leading-relaxed">
+                    Paste your JSON in the editor, fix any errors shown, and use the Format or Minify buttons to make it readable or compact.
+                  </dd>
+                </div>
+                <div id="faq-q2" className="bg-slate-900 rounded-lg border border-slate-800 p-4">
+                  <dt className="text-sm font-semibold text-slate-100">Can I compress JSON to Base64 Gzip?</dt>
+                  <dd className="text-sm text-slate-400 leading-relaxed">
+                    Yes. Encode to Gzip converts your JSON into a compressed Base64 string, and Decode to Editor lets you paste any Base64 Gzip to decompress it.
+                  </dd>
+                </div>
+                <div id="faq-q3" className="bg-slate-900 rounded-lg border border-slate-800 p-4">
+                  <dt className="text-sm font-semibold text-slate-100">How do I navigate matches inside the JSON?</dt>
+                  <dd className="text-sm text-slate-400 leading-relaxed">
+                    Open the search bar, type what you need to find, and use next/previous controls to highlight and jump through each match.
+                  </dd>
+                </div>
+              </dl>
+            </div>
+
           </div>
-        </div>
-      </div>
+        </section>
+      </main>
     </div>
   );
 };

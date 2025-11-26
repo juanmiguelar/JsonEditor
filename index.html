@@ -3,7 +3,114 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Advanced JSON Editor</title>
+    <title>Online JSON Editor | Validate, format and compress</title>
+    <meta name="description" content="Online JSON editor: validate, format, minify, search, tree view, and Base64 Gzip compression without leaving the browser." />
+    <meta name="keywords" content="json editor, json validator, json formatter, json viewer, gzip base64, tree view, json online, json lint" />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow" />
+    <meta name="application-name" content="JSON Editor" />
+    <meta name="author" content="Juan Miguel" />
+    <meta name="theme-color" content="#0f172a" />
+    <link rel="canonical" href="/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="JSON Editor" />
+    <meta property="og:title" content="Online JSON Editor | Validate, format and compress" />
+    <meta property="og:description" content="Validate, format, minify, search and compress JSON with tree view and Base64 Gzip utilities." />
+    <meta property="og:url" content="/" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Online JSON Editor | Validate, format and compress" />
+    <meta name="twitter:description" content="Complete JSON tool: linting, formatting, minification, search, tree view and Base64 Gzip compression." />
+    <link rel="preconnect" href="https://cdn.tailwindcss.com" />
+    <link rel="dns-prefetch" href="https://cdn.tailwindcss.com" />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
+    <script id="structured-data-app" type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "JSON Editor",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Web",
+  "description": "Online JSON editor to validate, format, minify, search and compress to Base64 Gzip.",
+  "author": {
+    "@type": "Person",
+    "name": "Juan Miguel",
+    "url": "https://www.juanmiguel.dev/"
+  },
+  "inLanguage": "en",
+  "softwareVersion": "1.0.0",
+  "isAccessibleForFree": true,
+  "featureList": [
+    "Live JSON validation",
+    "One-click formatting and minification",
+    "Search with match navigation inside JSON",
+    "Base64 Gzip compression and decompression",
+    "Tree view for quick inspection"
+  ]
+}
+    </script>
+    <script id="structured-data-faq" type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I validate and format JSON?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Paste your JSON in the editor, fix any errors shown, and use the Format or Minify buttons to make it readable or compact."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I compress JSON to Base64 Gzip?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Encode to Gzip converts your JSON into a compressed Base64 string, and Decode to Editor lets you paste any Base64 Gzip to decompress it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I navigate matches inside the JSON?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Open the search bar, type what you need to find, and use next/previous controls to highlight and jump through each match."
+      }
+    }
+  ]
+}
+    </script>
+    <script>
+      (function() {
+        const canonicalHref = window.location.origin + window.location.pathname;
+        const canonicalLink = document.querySelector('link[rel="canonical"]');
+        if (canonicalLink) {
+          canonicalLink.setAttribute('href', canonicalHref);
+        }
+        const ogUrl = document.querySelector('meta[property="og:url"]');
+        if (ogUrl) {
+          ogUrl.setAttribute('content', canonicalHref);
+        }
+        const appLd = document.getElementById('structured-data-app');
+        if (appLd?.textContent) {
+          const parsed = JSON.parse(appLd.textContent);
+          parsed.url = canonicalHref;
+          appLd.textContent = JSON.stringify(parsed);
+        }
+        const faqLd = document.getElementById('structured-data-faq');
+        if (faqLd?.textContent) {
+          const parsedFaq = JSON.parse(faqLd.textContent);
+          parsedFaq.url = canonicalHref + '#faq';
+          parsedFaq.mainEntity = parsedFaq.mainEntity.map((item, index) => ({
+            ...item,
+            acceptedAnswer: item.acceptedAnswer,
+            url: `${canonicalHref}#faq-q${index + 1}`
+          }));
+          faqLd.textContent = JSON.stringify(parsedFaq);
+        }
+      })();
+    </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Import Pako for Gzip -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pako/2.1.0/pako.min.js"></script>
@@ -36,7 +143,7 @@
 }
 </script>
 </head>
-  <body class="bg-slate-950 text-slate-200 h-screen overflow-hidden">
+  <body class="bg-slate-950 text-slate-200 min-h-screen overflow-x-hidden">
     <div id="root" class="h-full w-full"></div>
     <script type="module" src="/index.tsx"></script>
   </body>
