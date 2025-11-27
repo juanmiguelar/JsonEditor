@@ -5,8 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "prebuild": "npm run update:sitemap",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "update:sitemap": "node scripts/update-sitemap.js"
   },
   "dependencies": {
     "react": "^18.3.1",
