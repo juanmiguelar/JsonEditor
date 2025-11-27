@@ -133,7 +133,17 @@
       ::-webkit-scrollbar-thumb:hover {
         background: #64748b; 
       }
+      /* Hide static SEO fallback as soon as JS is available to avoid flash */
+      html.js-enabled #prerendered-content {
+        display: none;
+      }
     </style>
+    <script>
+      // Prevent content flash on JS-enabled visits
+      (function() {
+        document.documentElement.classList.add('js-enabled');
+      })();
+    </script>
   <script type="importmap">
 {
   "imports": {
@@ -161,11 +171,76 @@
           <li>Search with previous/next controls inside the JSON.</li>
           <li>Base64 Gzip utilities to compress or decompress.</li>
         </ul>
-        <p style="color:#94a3b8;font-size:14px;margin:0;">
-          Need quick answers? Visit the <a href="#faq" style="color:#60a5fa;text-decoration:underline;">FAQ</a> or paste JSON to start editing. Content stays indexable even without JavaScript for better SEO.
-        </p>
+    <p style="color:#94a3b8;font-size:14px;margin:0;">
+      Need quick answers? Visit the <a href="#faq" style="color:#60a5fa;text-decoration:underline;">FAQ</a> or paste JSON to start editing. Content stays indexable even without JavaScript for better SEO.
+    </p>
       </div>
     </noscript>
+    <div id="prerendered-content" class="bg-slate-950 text-slate-200">
+      <div class="max-w-6xl mx-auto px-6 py-12 space-y-12">
+        <header class="flex flex-col gap-3">
+          <p class="text-xs font-semibold tracking-[0.12em] uppercase text-slate-500">JSON tools</p>
+          <h1 class="text-3xl sm:text-4xl font-bold text-white leading-tight">Online JSON editor: validate, format, minify, search and compress</h1>
+          <p class="text-base sm:text-lg text-slate-300 max-w-3xl">Edit and lint JSON directly in the browser with tree view, search, and Base64 Gzip encode/decode. Ideal for APIs, webhooks, AI payloads, and configs.</p>
+          <div class="flex flex-wrap gap-2 text-sm text-slate-400">
+            <span class="px-3 py-1 rounded-full bg-slate-900 border border-slate-800">Validator</span>
+            <span class="px-3 py-1 rounded-full bg-slate-900 border border-slate-800">Formatter &amp; minifier</span>
+            <span class="px-3 py-1 rounded-full bg-slate-900 border border-slate-800">Tree view</span>
+            <span class="px-3 py-1 rounded-full bg-slate-900 border border-slate-800">Search navigation</span>
+            <span class="px-3 py-1 rounded-full bg-slate-900 border border-slate-800">Base64 Gzip</span>
+          </div>
+        </header>
+
+        <section class="grid gap-6 md:grid-cols-2">
+          <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-6 space-y-3">
+            <h2 class="text-lg font-semibold text-white">What you can do</h2>
+            <ul class="list-disc list-inside text-slate-300 space-y-1 text-sm leading-relaxed">
+              <li>Validate JSON with instant feedback and friendly errors.</li>
+              <li>Format or minify for readability or smaller payloads.</li>
+              <li>Navigate matches with search to find keys, IDs, or values.</li>
+              <li>Inspect nested objects and arrays with the tree view.</li>
+              <li>Encode or decode Base64 Gzip for API-ready payloads.</li>
+            </ul>
+          </div>
+          <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-6 space-y-3">
+            <h2 class="text-lg font-semibold text-white">Quick guide</h2>
+            <ol class="list-decimal list-inside text-slate-300 space-y-2 text-sm leading-relaxed">
+              <li>Paste or type your JSON and check the status line for errors.</li>
+              <li>Click <strong>Format</strong> or <strong>Minify</strong> depending on readability or size.</li>
+              <li>Use search (Ctrl/Cmd + F) to jump through matches.</li>
+              <li>Encode to Base64 Gzip for sharing, or decode to bring data back.</li>
+            </ol>
+            <p class="text-xs text-slate-500">Designed to stay crawlable so search engines index “online JSON editor, tree view, gzip base64, formatter, validator”.</p>
+          </div>
+        </section>
+
+        <section class="bg-slate-900/60 border border-slate-800 rounded-xl p-6 space-y-3">
+          <h2 class="text-lg font-semibold text-white">Use cases and semantic context</h2>
+          <p class="text-sm text-slate-300 leading-relaxed">Perfect for debugging REST/GraphQL APIs, reviewing webhooks, validating microservice configs or schemas, cleaning data before queues/serverless, and checking AI-generated JSON responses.</p>
+          <ul class="list-disc list-inside text-slate-300 space-y-1 text-sm">
+            <li>Debug payloads in integrations and automations.</li>
+            <li>Prepare messages for queues, Lambdas or serverless functions.</li>
+            <li>Document consistent, compressible examples for docs/PRs.</li>
+          </ul>
+        </section>
+
+        <section id="faq" class="space-y-4">
+          <h2 class="text-lg font-semibold text-white">Frequently asked questions about the JSON editor</h2>
+          <div id="faq-q1" class="bg-slate-900/60 border border-slate-800 rounded-lg p-4 space-y-2">
+            <h3 class="text-sm font-semibold text-slate-100">How do I validate and format JSON?</h3>
+            <p class="text-sm text-slate-300 leading-relaxed">Paste your JSON, fix any errors shown, and use the Format or Minify buttons to adjust readability or size.</p>
+          </div>
+          <div id="faq-q2" class="bg-slate-900/60 border border-slate-800 rounded-lg p-4 space-y-2">
+            <h3 class="text-sm font-semibold text-slate-100">Can I compress JSON to Base64 Gzip?</h3>
+            <p class="text-sm text-slate-300 leading-relaxed">Yes. Encode converts your JSON into a compressed Base64 string; Decode lets you paste any Base64 Gzip to decompress it back into the editor.</p>
+          </div>
+          <div id="faq-q3" class="bg-slate-900/60 border border-slate-800 rounded-lg p-4 space-y-2">
+            <h3 class="text-sm font-semibold text-slate-100">How do I navigate matches inside the JSON?</h3>
+            <p class="text-sm text-slate-300 leading-relaxed">Open the search bar, type what you need to find, and use next/previous controls to highlight and move through each match.</p>
+          </div>
+        </section>
+      </div>
+    </div>
     <div id="root" class="h-full w-full"></div>
     <script type="module" src="/index.tsx"></script>
   </body>
