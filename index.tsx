@@ -355,7 +355,7 @@ const App = () => {
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 bg-blue-600/90 rounded flex items-center justify-center text-sm font-bold text-white shadow-lg shadow-blue-900/40">JE</div>
           <div className="flex flex-col leading-tight">
-            <h1 className="font-semibold text-lg text-white">JSON Editor</h1>
+            <h1 className="font-semibold text-lg text-white">Online JSON Editor: validate, format and compress</h1>
             <p className="text-xs text-slate-500">Validator, formatter, compressor and tree viewer</p>
           </div>
         </div>

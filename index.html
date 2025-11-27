@@ -97,6 +97,23 @@
   ]
 }
     </script>
+    <script id="structured-data-howto" type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to format, validate and compress JSON online",
+  "description": "Use the online JSON editor to validate, format, search and compress payloads to Base64 Gzip.",
+  "totalTime": "PT1M",
+  "supply": ["JSON payload"],
+  "tool": ["Online JSON Editor"],
+  "step": [
+    { "@type": "HowToStep", "position": 1, "name": "Paste or type your JSON", "text": "Paste or type your JSON and check the status bar for errors." },
+    { "@type": "HowToStep", "position": 2, "name": "Format or minify", "text": "Use Format or Minify depending on readability or size needs." },
+    { "@type": "HowToStep", "position": 3, "name": "Find keys and values", "text": "Open search (Ctrl/Cmd + F) to locate keys, IDs or values." },
+    { "@type": "HowToStep", "position": 4, "name": "Compress or decompress", "text": "Encode to Base64 Gzip or Decode to bring compressed payloads back into the editor." }
+  ]
+}
+    </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Import Pako for Gzip -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pako/2.1.0/pako.min.js"></script>
