@@ -15,19 +15,18 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
     <link rel="manifest" href="/favicon/site.webmanifest" />
-    <meta property="og:image" content="/favicon/android-chrome-512x512.png" />
+    <meta property="og:image" content="https://zipjson.dev/favicon/android-chrome-512x512.png" />
     <meta property="og:image:width" content="512" />
     <meta property="og:image:height" content="512" />
     <meta property="og:image:alt" content="JSON Editor online: validate, format and compress" />
-    <meta name="twitter:image" content="/favicon/android-chrome-512x512.png" />
+    <meta name="twitter:image" content="https://zipjson.dev/favicon/android-chrome-512x512.png" />
     <meta name="twitter:image:alt" content="JSON Editor online: validate, format and compress" />
-    <!-- Canonical is applied at runtime to avoid Vite treating "/" as a static asset -->
-    <link rel="canonical" href="" />
+    <link rel="canonical" href="https://zipjson.dev/" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="JSON Editor" />
     <meta property="og:title" content="Online JSON Editor | Validate, format and compress" />
     <meta property="og:description" content="Validate, format, minify, search and compress JSON with tree view and Base64 Gzip utilities." />
-    <meta property="og:url" content="/" />
+    <meta property="og:url" content="https://zipjson.dev/" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Online JSON Editor | Validate, format and compress" />
     <meta name="twitter:description" content="Complete JSON tool: linting, formatting, minification, search, tree view and Base64 Gzip compression." />
@@ -49,6 +48,8 @@
     "url": "https://www.juanmiguel.dev/"
   },
   "inLanguage": "en",
+  "url": "https://zipjson.dev/",
+  "image": "https://zipjson.dev/favicon/android-chrome-512x512.png",
   "softwareVersion": "1.0.0",
   "isAccessibleForFree": true,
   "featureList": [
@@ -64,10 +65,12 @@
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
+  "url": "https://zipjson.dev/#faq",
   "mainEntity": [
     {
       "@type": "Question",
       "name": "How do I validate and format JSON?",
+      "url": "https://zipjson.dev/#faq-q1",
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Paste your JSON in the editor, fix any errors shown, and use the Format or Minify buttons to make it readable or compact."
@@ -76,6 +79,7 @@
     {
       "@type": "Question",
       "name": "Can I compress JSON to Base64 Gzip?",
+      "url": "https://zipjson.dev/#faq-q2",
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Yes. Encode to Gzip converts your JSON into a compressed Base64 string, and Decode to Editor lets you paste any Base64 Gzip to decompress it."
@@ -84,6 +88,7 @@
     {
       "@type": "Question",
       "name": "How do I navigate matches inside the JSON?",
+      "url": "https://zipjson.dev/#faq-q3",
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Open the search bar, type what you need to find, and use next/previous controls to highlight and jump through each match."
@@ -91,45 +96,6 @@
     }
   ]
 }
-    </script>
-    <script>
-      (function() {
-        const canonicalHref = window.location.origin + window.location.pathname;
-        const canonicalLink = document.querySelector('link[rel="canonical"]');
-        if (canonicalLink) {
-          canonicalLink.setAttribute('href', canonicalHref);
-        }
-        const ogUrl = document.querySelector('meta[property="og:url"]');
-        if (ogUrl) {
-          ogUrl.setAttribute('content', canonicalHref);
-        }
-        const ogImage = document.querySelector('meta[property="og:image"]');
-        const twitterImage = document.querySelector('meta[name="twitter:image"]');
-        const imageUrl = `${window.location.origin}/favicon/android-chrome-512x512.png`;
-        if (ogImage) {
-          ogImage.setAttribute('content', imageUrl);
-        }
-        if (twitterImage) {
-          twitterImage.setAttribute('content', imageUrl);
-        }
-        const appLd = document.getElementById('structured-data-app');
-        if (appLd?.textContent) {
-          const parsed = JSON.parse(appLd.textContent);
-          parsed.url = canonicalHref;
-          appLd.textContent = JSON.stringify(parsed);
-        }
-        const faqLd = document.getElementById('structured-data-faq');
-        if (faqLd?.textContent) {
-          const parsedFaq = JSON.parse(faqLd.textContent);
-          parsedFaq.url = canonicalHref + '#faq';
-          parsedFaq.mainEntity = parsedFaq.mainEntity.map((item, index) => ({
-            ...item,
-            acceptedAnswer: item.acceptedAnswer,
-            url: `${canonicalHref}#faq-q${index + 1}`
-          }));
-          faqLd.textContent = JSON.stringify(parsedFaq);
-        }
-      })();
     </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Import Pako for Gzip -->
